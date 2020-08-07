@@ -1,0 +1,42 @@
+{
+  "name": "graphql-react-event-booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress",
+    "deploy": "node-deploy $(pwd)",
+    "watch": "babel-watch -L src/index.js",
+    "linkall": "yarn link node-deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "async": "^3.2.0",
+    "babel-loader": "^8.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dataloader": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "got": "^11.3.0",
+    "graphql": "^14.0.2",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.15",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.0"
+  },
+  "devDependencies": {
+    "babel-watch": "^7.0.0",
+    "node-deploy": "../node-deploy",
+    "nodemon": "^2.0.4"
+  }
+}

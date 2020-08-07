@@ -1,0 +1,49 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "chart.js": "^1.1.1",
+    "react": "^16.7.0",
+    "react-chartjs": "^1.2.0",
+    "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.2"
+  },
+  "scripts": {
+    "watch": "parcel --port=7001 src/index.html",
+    "deploy": "./deploy.sh",
+    "predeploy": "NODE_ENV=production yarn build",
+    "build": "rm -rf dist && NODE_ENV=production parcel build src/index.html"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-node": "^0.0.1-security",
+    "babel-watch": "^7.0.0",
+    "browser-sync": "^2.26.12",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.0",
+    "node-sass": "^4.14.1",
+    "parcel-bundler": "^1.12.4"
+  },
+  "main": "index.js",
+  "license": "MIT"
+}

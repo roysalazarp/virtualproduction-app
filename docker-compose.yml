@@ -1,0 +1,69 @@
+version: '3'
+services:
+  virtualscenes-app: 
+    container_name: virtualscenes-app
+    build: 
+      context: '.'
+      dockerfile: './virtualscenes-app/Dockerfile'
+    ports: 
+      - '8080:3000'
+    depends_on: 
+      - api-gateway
+    volumes:
+      - ./virtualscenes-app:/opt/app
+  
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: '.'
+      dockerfile: './api-gateway/Dockerfile'
+    ports:
+      - '7000:7000'
+    depends_on:
+      - users-service
+      - scenes-service
+    environment:
+      - USERS_SERVICE_URI=http://users-service:7100
+      - SCENES_SERVICE_URI=http://scenes-service:7101
+    volumes:
+      - ./api-gateway:/opt/app
+
+  users-service:
+    container_name: users-service
+    build:
+      context: '.'
+      dockerfile: './users-service/Dockerfile'
+    ports:
+      - '7100:7100'
+    depends_on:
+      - users-service-db
+    environment:
+      - DB_URI=mongodb://users-service-db/users-db
+    volumes:
+      - ./users-service:/opt/app
+      
+  users-service-db:
+    container_name: users-service-db
+    image: mongo
+    ports: 
+      - '7200:27017'
+
+  scenes-service:
+    container_name: scenes-service
+    build:
+      context: '.'
+      dockerfile: './scenes-service/Dockerfile'
+    depends_on:
+      - scenes-service-db
+    environment:
+      - DB_URI=mongodb://scenes-service-db/scenes-db
+    ports:
+      - '7101:7101'
+    volumes:
+      - ./scenes-service:/opt/app
+  
+  scenes-service-db:
+    container_name: scenes-service-db
+    image: mongo
+    ports: 
+      - '7201:27017'
